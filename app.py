@@ -30,8 +30,6 @@ def index():
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=e015ac40c1e51777f52433b0962155a4'
     r = requests.get(url.format(city.name)).json()
 
-    print(r)
-
     weather = {
       'city': city.name,
       'temperature': int(round(r['main']['temp'])),
