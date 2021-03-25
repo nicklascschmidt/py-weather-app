@@ -1,12 +1,16 @@
 # py-weather-app
-Simple python app to search weather by city
+Python app to search weather by city
 
 ## Basic Info
-
-Followed [this YT tutorial](https://www.youtube.com/watch?v=lWA0GgUN8kg&ab_channel=PrettyPrinted) made by user Pretty Printed.
+User searches for weather by city and adds/removes cities from the UI, which is populated from a database.
 
 ## Technologies
-* Flask
+* Flask (render_template, request, redirect)
 * Flask-SQLAlchemy
-* Flask render_template
 * OpenWeatherMap API
+* Bulma CSS framework
+* HTML
+
+## Credit
+
+Followed [this YT tutorial](https://www.youtube.com/watch?v=lWA0GgUN8kg&ab_channel=PrettyPrinted) made by user Pretty Printed.
