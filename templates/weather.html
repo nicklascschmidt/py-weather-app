@@ -37,6 +37,19 @@
                   <button class="button is-info">Add City</button>
                 </div>
               </div>
+              {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  {% set message_class = 'is-success' %}
+                    {% if category == 'error' %}
+                      {% set message_class = 'is-danger' %}
+                    {% endif %}
+                    <div class="notification {{ message_class }}">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
             </form>
           </div>
         </div>
@@ -44,9 +57,9 @@
     </section>
     <section class="section">
       <div class="container">
-        <div class="columns">
-          <div class="column is-offset-4 is-4">
-            {% for weather in weather_data %}
+        <div class="columns is-centered is-multiline">
+          {% for weather in weather_data %}
+          <div class="column is-4">
             <div class="box">
               <article class="media">
                 <div class="media-left">
@@ -60,18 +73,23 @@
                 <div class="media-content">
                   <div class="content">
                     <p>
-                      <span class="title">{{ weather.city }}</span>
+                      <span class="title is-4">{{ weather.city }}</span>
                       <br />
-                      <span class="subtitle">{{ weather.temperature }}° F</span>
+                      <span class="subtitle is-4">{{ weather.temperature }}° F</span>
                       <br />
                       {{ weather.description }}
                     </p>
                   </div>
                 </div>
+                <div class="media-right">
+                  <a href="{{ url_for('delete_city', name=weather.city) }}">
+                    <button class="delete"></button>
+                  </a>
+                </div>
               </article>
             </div>
-            {% endfor %}
           </div>
+          {% endfor %}
         </div>
       </div>
     </section>
